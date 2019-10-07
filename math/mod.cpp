@@ -1,19 +1,13 @@
-#include <iostream>
-#include <iomanip>
-#include <utility>
-#include <cmath>
-#include <numeric>
-#include <vector>
-#include <set>
-#include <algorithm>
-#include <string>
+#include<iostream>
 
 using namespace std;
+
+typedef long long ll;
 
 #define rep(i, n) for(int i = 0; i < n; i++)
 #define repr(i, a, b) for(int i = a; i < b; i++)
 
-long gcd(long a, long b) {
+ll gcd(ll a, ll b) {
     if (a < b) {
         swap(a, b);
     }
@@ -26,10 +20,6 @@ long gcd(long a, long b) {
     return a;
 }
 
-long lcm(long a, long b) {
+ll lcm(ll a, ll b) {
     return a * b / gcd(a, b);
-}
-
-int main() {
-    return 0;
 }
