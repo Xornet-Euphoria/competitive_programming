@@ -7,7 +7,8 @@ typedef long long ll;
 #define rep(i, n) for(int i = 0; i < n; i++)
 #define repr(i, a, b) for(int i = a; i < b; i++)
 
-ll gcd(ll a, ll b) {
+template<typename T>
+T gcd(T a, T b) {
     if (a < b) {
         swap(a, b);
     }
@@ -20,6 +21,7 @@ ll gcd(ll a, ll b) {
     return a;
 }
 
-ll lcm(ll a, ll b) {
+template<typename T>
+T lcm(T a, T b) {
     return a * b / gcd(a, b);
 }
