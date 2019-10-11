@@ -17,6 +17,14 @@ typedef long long ll;
 #define repr(i, a, b) for(int i = a; i < b; i++)
 #define vec_all(vec) vec.begin(), vec.end()
 
+// vectorデバッグ
+template<typename T>
+void dump_vec(vector<T> vec) {
+    rep(i, vec.size()) {
+        cout << vec[i] << endl;
+    }
+}
+
 int main() {
     return 0;
 }
