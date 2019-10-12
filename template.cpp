@@ -15,7 +15,9 @@ typedef long long ll;
 typedef pair<int, int> p_i;
 
 #define rep(i, n) for(int i = 0; i < n; i++)
-#define repr(i, a, b) for(int i = a; i < b; i++)
+#define repext(i, a, b) for (int i = a; i < b; i++)
+#define reprev(i, n) for (int i = n - 1; i >= 0; i--)
+#define repextrev(i, a, b) for (int i = b - 1; i >= a; i--)
 #define vec_all(vec) vec.begin(), vec.end()
 
 // vectorデバッグ
