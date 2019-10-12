@@ -32,18 +32,43 @@ map<T, int> factorize(T a) {
     map<T, int> ret;
     int cnt;
     T num = 2;
+    T sup_num = (T) sqrt(a);
+
+    // 2が素因数か
     if (a % num == 0) {
-        ret[num] = 0;
+        ret[num] = 1;
+        a /= num;
+        while (true) {
+            if (a % num == 0) {
+                ret[num]++;
+                a /= num;
+            } else {
+                break;
+            }
+        }
     }
 
+    num++;
+
+    if (a % num == 0) {
+        ret[num] = 1;
+        a /= num;
+    }
+
+    // 奇数の素因数探索
     while (a > 1) {
         if (a % num == 0) {
             ret[num]++;
             a /= num;
         } else {
-            num++;
+            if (num > sup_num) {
+                ret[a] = 1;
+                break;
+            }
+            num += 2;
             if (a % num == 0) {
-                ret[num] = 0;
+                ret[num] = 1;
+                a /= num;
             }
         }
     }
