@@ -28,6 +28,9 @@ void dump_vec(vector<T> vec) {
     }
 }
 
+// --- notice ---
+// intの和はllにしろ
+
 int main() {
     return 0;
 }
