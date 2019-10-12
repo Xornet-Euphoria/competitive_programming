@@ -25,7 +25,7 @@ typedef pair<int, int> p_i;
 template<typename T>
 void dump_vec(vector<T> vec) {
     rep(i, vec.size()) {
-        cout << vec[i] << endl;
+        cout << i << ": " << vec[i] << endl;
     }
 }
 
