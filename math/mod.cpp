@@ -29,11 +29,11 @@ T lcm(T a, T b) {
 
 template<typename T>
 pair<T, T> ext_euclid(T a, T b) {
-    assert(gcd(a, b) == 1);
-
-    if (a < b) {
-        swap(a, b);
+    // 元々正の数に関するライブラリだったので暫定措置
+    if (a < 0 || b < 0) {
+        assert(false);
     }
+    assert(gcd(a, b) == 1);
 
     pair<T, T> ret;
     if (b == 1) {
@@ -43,7 +43,7 @@ pair<T, T> ext_euclid(T a, T b) {
     T q = a / b;
     T r = a % b;
 
-    T next = ext_euclid(b, r);
+    pair<T, T> next = ext_euclid<T>(b, r);
 
     return pair<T, T>(next.second, next.first - q * next.second);
 }
