@@ -1,4 +1,5 @@
-#include<iostream>
+#include <iostream>
+#include <cassert>
 
 using namespace std;
 
@@ -24,4 +25,25 @@ T gcd(T a, T b) {
 template<typename T>
 T lcm(T a, T b) {
     return a * b / gcd(a, b);
+}
+
+template<typename T>
+pair<T, T> ext_euclid(T a, T b) {
+    assert(gcd(a, b) == 1);
+
+    if (a < b) {
+        swap(a, b);
+    }
+
+    pair<T, T> ret;
+    if (b == 1) {
+        return pair<T, T>(0, 1);
+    }
+
+    T q = a / b;
+    T r = a % b;
+
+    T next = ext_euclid(b, r);
+
+    return pair<T, T>(next.second, next.first - q * next.second);
 }
