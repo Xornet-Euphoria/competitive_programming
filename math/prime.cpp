@@ -4,7 +4,7 @@
 using namespace std;
 
 #define rep(i, n) for(int i = 0; i < n; i++)
-#define repr(i, a, b) for(int i = a; i < b; i++)
+#define repext(i, a, b) for(int i = a; i < b; i++)
 
 template<typename T>
 bool is_prime(T p) {
@@ -12,7 +12,7 @@ bool is_prime(T p) {
         return false;
     }
     T sq_p = (T) sqrt(p);
-    repr(i, 2, sq_p + 1) {
+    repext(i, 2, sq_p + 1) {
         if (p % i == 0) {
             return false;
         }
@@ -28,7 +28,7 @@ map<T, int> factorize(T a) {
         tmp.insert(make_pair(a, 1));
         return tmp;
     }
-    
+
     map<T, int> ret;
     int cnt;
     T num = 2;
