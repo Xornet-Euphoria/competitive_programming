@@ -1,4 +1,5 @@
 #include <cmath>
+#include <map>
 
 using namespace std;
 
@@ -18,4 +19,34 @@ bool is_prime(T p) {
     }
 
     return true;
+}
+
+template<typename T>
+map<T, int> factorize(T a) {
+    if (is_prime(a)) {
+        map<T, int> tmp;
+        tmp.insert(make_pair(a, 1));
+        return tmp;
+    }
+    
+    map<T, int> ret;
+    int cnt;
+    T num = 2;
+    if (a % num == 0) {
+        ret[num] = 0;
+    }
+
+    while (a > 1) {
+        if (a % num == 0) {
+            ret[num]++;
+            a /= num;
+        } else {
+            num++;
+            if (a % num == 0) {
+                ret[num] = 0;
+            }
+        }
+    }
+
+    return ret;
 }
