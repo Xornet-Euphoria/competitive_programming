@@ -35,6 +35,13 @@ void dump_vec(vector<T> vec) {
     }
 }
 
+template<typename T, typename S>
+void dump_dic(map<T, S> dic) {
+    for (auto v : dic) {
+        cout << v.first << ": " << v.second << endl;
+    }
+}
+
 // --- notice ---
 // intの和はllにしろ
 
