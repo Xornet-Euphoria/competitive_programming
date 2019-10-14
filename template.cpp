@@ -21,6 +21,8 @@ typedef pair<int, int> p_i;
 #define reprev(i, n) for (int i = n - 1; i >= 0; i--)
 #define repextrev(i, a, b) for (int i = b - 1; i >= a; i--)
 
+#define repv(values) for (auto v : values)
+
 #define vec_all(vec) vec.begin(), vec.end()
 #define sum(vec) accumulate(vec_all(vec), 0)
 #define srt(vec) sort(vec_all(vec))
