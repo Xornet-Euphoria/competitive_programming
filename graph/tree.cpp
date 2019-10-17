@@ -24,33 +24,42 @@ typedef pair<int, int> p_i;
 struct Tree
 {
     int n; // 頂点数
-    int root;
+    int top;
     vector<vector<int>> graph;
     vector<int> parent;
     vector<int> rank;
 
     // 1-origin
-    Tree(vector<p_i> edges, int root = 0) {
+    Tree(vector<p_i> edges, int root = 0)
+    {
         n = edges.size() + 1;
         graph = vector<vector<int>>(n + 1, vector<int>());
         parent = vector<int>(n + 1, 0);
         rank = vector<int>(n + 1, 0);
-        repv(v, edges) {
+        repv(v, edges)
+        {
             graph[v.first].push_back(v.second);
             graph[v.second].push_back(v.first);
         }
 
-        if (root != 0) {
+        if (root != 0)
+        {
+            top = root;
             queue<int> que;
             que.push(root);
+            parent[root] = 0;
+            rank[root] = 1;
             vector<int> child;
             int current;
-            while (que.size() > 0) {
+            while (que.size() > 0)
+            {
                 current = que.front();
                 que.pop();
                 child = graph[current];
-                repv(v, child) {
-                    if (rank[v] == 0) {
+                repv(v, child)
+                {
+                    if (rank[v] == 0)
+                    {
                         rank[v] = rank[current] + 1;
                         parent[v] = current;
                         que.push(v);
@@ -60,25 +69,29 @@ struct Tree
         }
     }
 
-    template<typename T, class Fn>
-    vector<T> bfs(vector<T> data, Fn f , int start = root) {
+    // f: data[child] = f(child, parent, data)
+    template <typename T, class Fn>
+    vector<T> bfs(vector<T> data, Fn f, int start)
+    {
         queue<int> que;
         que.push(start);
         vector<int> child;
         int current;
-        vector<bool> done(n + 1, false);
-        done[start] = true;
-        while (que.size() > 0) {
+        while (que.size() > 0)
+        {
             current = que.front();
             que.pop();
             child = graph[current];
-            repv(v, child) {
-                if (!done[v]) {
-                    f(current, v, data);
+            repv(v, child)
+            {
+                if (rank[v] > rank[current])
+                {
+                    // data[v] += data[current];
+                    data[v] = f(data[v], data[current]);
                     que.push(v);
                 }
             }
         }
-        return vector<T>();
+        return data;
     }
 };
